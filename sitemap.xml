@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- UPLOAD TO: repo root -> https://mysaleshelp.com/sitemap.xml -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- PAGE 1 : HOMEPAGE -->
+  <url>
+    <loc>https://mysaleshelp.com/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mysaleshelp.com/images/sales-training-infographic.png</image:loc>
+      <image:title>Sales training infographic: intrinsic buyer motivators and the six-step conversion process</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mysaleshelp.com/images/sales-objection-handling-spin-wheel-helper.png</image:loc>
+      <image:title>Spin the objection overcoming wheel</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mysaleshelp.com/images/best-sales-trainer.png</image:loc>
+      <image:title>Zach Wennstedt, sales trainer</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://mysaleshelp.com/images/online-sales-coach.jpg</image:loc>
+      <image:title>Online sales coaching session</image:title>
+    </image:image>
+  </url>
+
+  <!-- PAGE 2 : OBJECTION HANDLING LIBRARY -->
+  <url>
+    <loc>https://mysaleshelp.com/objection-library/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- PAGE 3 : SALES GLOSSARY -->
+  <url>
+    <loc>https://mysaleshelp.com/sales-glossary/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- PAGE 4 : NOT BUILT YET. Uncomment when it goes live. -->
+  <!--
+  <url>
+    <loc>https://mysaleshelp.com/sales-training-programs/</loc>
+    <lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  -->
+
+</urlset>
