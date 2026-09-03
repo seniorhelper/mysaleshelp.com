@@ -47,7 +47,9 @@
  "founder":{"@id":"https://mysaleshelp.com/#zach"},
  "employee":{"@id":"https://mysaleshelp.com/#zach"},
  "email":"sales@eyetoad.com",
+ "telephone":"+1-800-481-8638",
  "priceRange":"$$-$$$",
+ "contactPoint":{"@type":"ContactPoint","telephone":"+1-800-481-8638","contactType":"sales","areaServed":"US","availableLanguage":"English"},
  "address":{"@type":"PostalAddress","streetAddress":"1001 Bannock St #660","addressLocality":"Denver","addressRegion":"CO","postalCode":"80204","addressCountry":"US"},
  "geo":{"@type":"GeoCoordinates","latitude":39.7307,"longitude":-104.9903},
  "areaServed":[{"@type":"City","name":"Denver"},{"@type":"State","name":"Colorado"},{"@type":"Country","name":"United States"}],
@@ -236,7 +238,7 @@
   --disp:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif;
   --body:'Public Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
 
-  --hdr:74px;
+  --hdr:116px;
   --r-sm:4px;
   --r:8px;
   --maxw:1180px;
@@ -262,7 +264,7 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
-@media(max-width:900px){ body{font-size:17px;line-height:1.62} :root{--hdr:66px} }
+@media(max-width:900px){ body{font-size:17px;line-height:1.62} :root{--hdr:86px} }
 
 img,svg,video,canvas{display:block;max-width:100%}
 img{height:auto}
@@ -333,16 +335,26 @@ em{font-style:italic}
 .btn[disabled]{opacity:.5;cursor:not-allowed}
 
 /* ---------- header ---------- */
-.topbar{background:var(--ink);color:var(--on-dark-2);font-size:.8rem;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)}
-.topbar .wrap{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap}
-.topbar a{color:#FFC49B;font-weight:600}
+.callbar{background:var(--ink);color:var(--on-dark-2);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.09)}
+.callbar .wrap{display:flex;gap:10px 20px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.callbar .cb-text{font-size:.84rem}
+.cb-num{
+  display:inline-flex;align-items:center;gap:9px;color:#fff;font-family:var(--disp);font-weight:700;
+  font-size:clamp(1.02rem,3.4vw,1.2rem);letter-spacing:-.02em;line-height:1.1;
+}
+.cb-num:hover{color:#FFA260;text-decoration:none}
+.cb-num svg{flex:none;color:var(--signal)}
+.cb-num b{color:#FFA260;font-weight:700}
+.hdr-act{display:flex;align-items:center;gap:12px;flex:none}
+.hdr-call{gap:8px;padding:14px 20px;font-size:.98rem}
+.hdr-call svg{flex:none}
 header.site{
   position:sticky;top:0;z-index:600;height:var(--hdr);background:rgba(255,255,255,.96);
   backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--rule);
 }
 .hdr{display:flex;align-items:center;justify-content:space-between;gap:20px;height:100%}
 .brand{display:block;line-height:0;flex:none}
-.brand img{width:clamp(210px,26vw,310px);height:auto}
+.brand img{width:clamp(262px,31vw,434px);height:auto}
 nav.main{display:flex;align-items:center;gap:24px}
 nav.main a{color:var(--ink);font-weight:600;font-size:.96rem;padding:6px 0;border-bottom:2px solid transparent}
 nav.main a:hover,nav.main a[aria-current="page"]{border-bottom-color:var(--signal);text-decoration:none}
@@ -720,7 +732,16 @@ footer.site a:hover{color:#FFA260}
 .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:clamp(24px,3.4vw,44px);margin-bottom:40px}
 .fgrid ul{list-style:none;padding:0;margin:0}
 .fgrid li{margin-bottom:9px}
-.flogo{width:clamp(210px,24vw,270px);height:auto;margin-bottom:16px;filter:brightness(0) invert(1);opacity:.94}
+/* The logo PNG has an opaque background, so no CSS filter can key it out on a
+   dark footer. The reversed lockup is set in type instead. Swap an <img> back
+   in here the day a transparent reversed PNG exists. */
+.fmark{display:inline-flex;align-items:baseline;font-family:var(--disp);font-weight:800;
+  font-size:clamp(1.85rem,6.2vw,2.5rem);letter-spacing:-.035em;line-height:1;margin-bottom:18px;color:#fff}
+.fmark:hover{text-decoration:none}
+.fmark b{color:#FF8A45;font-weight:800}
+.fmark i{font-style:normal;font-size:.42em;font-weight:700;color:var(--on-dark-2);margin-left:2px;letter-spacing:0}
+.fcall{display:inline-flex;margin:4px 0 18px;gap:9px}
+.fcall svg{flex:none}
 .fbot{border-top:1px solid var(--rule-dark);padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.85rem}
 
 /* ---------- responsive ---------- */
@@ -729,10 +750,11 @@ footer.site a:hover{color:#FFA260}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fgrid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:900px){
+@media(max-width:1100px){
   nav.main{display:none}
-  .hdr .hdr-cta{display:none}
   .hamb{display:flex}
+}
+@media(max-width:900px){
   .drill,.split,.band{grid-template-columns:1fr}
   .band .btn{justify-self:start}
   .split img{order:-1}
@@ -741,6 +763,11 @@ footer.site a:hover{color:#FFA260}
   .mgrid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .dock{display:flex}
   body{padding-bottom:72px}
+}
+@media(max-width:640px){
+  .hdr-call{display:none}
+  .callbar .cb-text{display:none}
+  .callbar .wrap{justify-content:center}
 }
 @media(max-width:600px){
   .facts{grid-template-columns:1fr}
@@ -756,7 +783,7 @@ footer.site a:hover{color:#FFA260}
   html{scroll-behavior:auto}
 }
 @media print{
-  header.site,.dock,.modal,.topbar,.hamb,.mobnav,.lightbox{display:none!important}
+  header.site,.dock,.modal,.callbar,.hamb,.mobnav,.lightbox{display:none!important}
   body{font-size:12pt}
   .res-body{display:block!important}
 }
@@ -789,13 +816,14 @@ footer.site a:hover{color:#FFA260}
  <symbol id="i-ease" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3L5 13.5h5.5L9.5 21 19 10h-5.5z"/></symbol>
  <symbol id="i-health" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12.5h4l2-4 3 8 2.5-5 1.7 3h4.8"/></symbol>
  <symbol id="i-family" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="7" r="2.6"/><circle cx="16.5" cy="7" r="2.6"/><path d="M3 18c0-2.6 2-4.4 4.5-4.4S12 15.4 12 18M12 18c0-2.6 2-4.4 4.5-4.4S21 15.4 21 18"/></symbol>
+ <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 3.5h3.1l1.6 4-2 1.3a12.4 12.4 0 0 0 6.3 6.3l1.3-2 4 1.6v3.1a2 2 0 0 1-2.2 2A17.6 17.6 0 0 1 4.2 5.7a2 2 0 0 1 2-2.2z"/></symbol>
  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.6c0 4.4-3 8-7.5 9.4C7.5 19.6 4.5 16 4.5 11.6V6z"/></symbol>
 </svg>
 
-<div class="topbar">
+<div class="callbar">
   <div class="wrap">
-    <span>Sales training and objection handling, run out of Denver and delivered nationwide</span>
-    <span>Free tools, no signup. <a href="#book">Book a call with Zach</a></span>
+    <span class="cb-text">Sales training and objection handling, run out of Denver and delivered nationwide</span>
+    <a class="cb-num" href="tel:+18004818638"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free <b>1-800-481-8638</b></a>
   </div>
 </div>
 
@@ -807,23 +835,26 @@ footer.site a:hover{color:#FFA260}
     <nav class="main" aria-label="Main">
       <a href="/" aria-current="page">Home</a>
       <a href="#engine">Objection engine</a>
-      <a href="#makeover">Makeovers</a>
+      <a href="/sales-training-makeover/">Makeovers</a>
       <a href="#course">The course</a>
       <a href="/objection-library/">Library</a>
       <a href="#packages">Packages</a>
     </nav>
-    <a href="#book" class="btn btn-solid hdr-cta">Book a call</a>
-    <button class="hamb" id="hamb" aria-expanded="false" aria-controls="mobnav" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="hdr-act">
+      <a href="tel:+18004818638" class="btn btn-solid hdr-call"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
+      <button class="hamb" id="hamb" aria-expanded="false" aria-controls="mobnav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
 <div class="mobnav" id="mobnav">
+  <a href="tel:+18004818638" class="btn btn-solid btn-block btn-lg" style="margin:0 0 18px"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
   <a href="/" aria-current="page">Home</a>
   <a href="#engine">Objection engine</a>
   <a href="#drill">Spin the wheel</a>
-  <a href="#makeover">Sales training makeovers</a>
+  <a href="/sales-training-makeover/">Sales training makeovers</a>
   <a href="#system">The selling system</a>
   <a href="#course">Do The Right Thing course</a>
   <a href="/objection-library/">Objection library</a>
@@ -845,6 +876,9 @@ footer.site a:hover{color:#FFA260}
       <span class="kicker"><i></i> The objection engine, free forever</span>
       <h1>They just said something that stopped you cold.</h1>
       <p class="hero-sub speakable-intro">Type it into the box. In about a second you get the reframe, two scripts you can actually say out loud, and the one move that ends the conversation in your favor. 216 real objections, answered by sales trainer Zach Wennstedt, with no signup and nothing stored.</p>
+      <p style="margin:0 0 26px">
+        <a href="tel:+18004818638" class="btn btn-solid btn-lg"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
+      </p>
       <div class="hero-facts">
         <div><b id="dbCount">216</b>objections answered</div>
         <div><b id="scriptCount">432</b>written scripts</div>
@@ -998,7 +1032,11 @@ footer.site a:hover{color:#FFA260}
         <li><strong>Your marketing stops undercutting your reps.</strong> Same criteria, same language, same order, on the page and in the room.</li>
         <li><strong>The business gets more valuable.</strong> A revenue engine that runs without the founder in the room is a transferable asset. One that depends on you personally is a job with employees.</li>
       </ul>
-      <p><a href="#book" class="btn btn-solid btn-lg" style="margin-top:10px">Talk through a makeover</a></p>
+      <p style="margin-top:14px">
+        <a href="tel:+18004818638" class="btn btn-solid btn-lg"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
+        <a href="#book" class="btn btn-line btn-lg">Send the details instead</a>
+      </p>
+      <p style="font-size:.95rem;color:var(--dust)">Full detail on the <a href="/sales-training-makeover/">sales training makeover</a> page, including what gets delivered week by week.</p>
     </div>
   </div>
 </section>
@@ -1642,7 +1680,8 @@ footer.site a:hover{color:#FFA260}
       </div>
     </div>
 
-    <p class="col-wide" style="margin:26px auto 0;text-align:center;color:var(--on-dark-2)">Not sure which fits? Tell me your team size and what's breaking and I'll tell you honestly, including if the answer is that you need the free tools on this page and nothing else. Full detail on every level is on the <a href="/sales-training-programs/">sales training programs and coaching packages</a> page.</p>
+    <p class="col-wide" style="margin:26px auto 0;text-align:center;color:var(--on-dark-2)">Not sure which fits? Tell me your team size and what's breaking and I'll tell you honestly, including if the answer is that you need the free tools on this page and nothing else. Full detail on every level is on the <a href="/sales-training-programs/">sales training programs and coaching packages</a> page, and the rebuild engagement is on the <a href="/sales-training-makeover/">sales training makeover</a> page.</p>
+    <p style="text-align:center;margin-top:18px"><a href="tel:+18004818638" class="btn btn-solid btn-lg"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a></p>
   </div>
 </section>
 
@@ -1667,7 +1706,8 @@ footer.site a:hover{color:#FFA260}
       </div>
       <p class="scratch-hint" id="scratchHint">Scratch the gold panel to reveal your offer.</p>
       <div class="scratch-claim" id="scratchClaim">
-        <a href="#book" class="btn btn-solid btn-lg btn-block">Claim it and book a call</a>
+        <a href="tel:+18004818638" class="btn btn-solid btn-lg btn-block"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free and claim it</a>
+        <a href="#book" class="btn btn-line btn-lg btn-block" style="margin-top:8px">Or send it over in writing</a>
         <p style="text-align:center;color:var(--on-dark-2);font-size:.8rem;margin:11px 0 0">Mention your code on the call. Valid 30 days, applies to a new systematic sales presentation engagement, one per company, not combinable with other offers.</p>
       </div>
     </div>
@@ -1781,8 +1821,8 @@ footer.site a:hover{color:#FFA260}
         <p>That combination is why I do this work. Marketing people rarely know what happens after the form fill. Sales trainers rarely know where the lead came from or what it cost. I know both, which means when I build you a selling process it accounts for the quality and intent of the traffic feeding it.</p>
         <p>I am not a motivational speaker and I do not do ballroom events. What I do is get into your business, listen to your calls, write down what your best person does, turn it into something teachable, and drill your team on it until it holds under pressure.</p>
         <p style="margin-top:1.3em">
-          <a href="#book" class="btn btn-solid btn-lg">Talk to Zach</a>
-          <a href="/sales-training-programs/" class="btn btn-line btn-lg">Training packages</a>
+          <a href="tel:+18004818638" class="btn btn-solid btn-lg"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
+          <a href="#book" class="btn btn-line btn-lg">Talk to Zach in writing</a>
         </p>
       </div>
       <div>
@@ -1859,6 +1899,7 @@ footer.site a:hover{color:#FFA260}
     <div class="shead col-wide" style="text-align:center;margin-inline:auto">
       <h2>Let's look at your sales process</h2>
       <p style="margin-inline:auto">Tell me about your team and what isn't working. I'll come back with an honest read on whether I can help and what it would look like. If the answer is that you don't need me, I'll say that too.</p>
+      <p style="margin:22px auto 0"><a href="tel:+18004818638" class="btn btn-solid btn-lg"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Prefer to talk now? Call 1-800-481-8638</a></p>
     </div>
 
     <div class="formcard">
@@ -1915,7 +1956,7 @@ footer.site a:hover{color:#FFA260}
         <dt>Site</dt><dd>MySalesHelp.com, a free objection-handling engine and sales training resource.</dd>
         <dt>Operated by</dt><dd>Zach Wennstedt, sales trainer and founder of Eye To Ad Media, Denver, Colorado. Parent company: Search Converts LLC.</dd>
         <dt>Address</dt><dd>1001 Bannock St #660, Denver, CO 80204, United States.</dd>
-        <dt>Contact</dt><dd>sales@eyetoad.com</dd>
+        <dt>Contact</dt><dd>Toll-free 1-800-481-8638. Email sales@eyetoad.com</dd>
         <dt>Primary services</dt><dd>Sales training makeovers; systematic selling process builds; objection handling intensives; systematic sales presentation design; ongoing sales coaching retainers; field ride-alongs.</dd>
         <dt>Flagship course</dt><dd>Do The Right Thing Sales Perfect Training Course by Zach Wennstedt, an ethical-foundation sales training program covering buyer psychology, the five self-interests, self-selling questions, tie-downs, trial closes, price conditioning, and question-sequence selling.</dd>
         <dt>Packages</dt><dd>The Foundation (1 to 3 seats); The Systematic Selling Build (4 to 12); The Field Program (13 to 50, includes in-person ride-alongs with Zach Wennstedt); The Retainer (ongoing monthly coaching).</dd>
@@ -1936,9 +1977,10 @@ footer.site a:hover{color:#FFA260}
   <div class="wrap">
     <div class="fgrid">
       <div>
-        <img class="flogo" src="images/sales-trainer-logo.png" alt="MySalesHelp.com" width="270" height="62" loading="lazy">
+        <a class="fmark" href="/" aria-label="MySalesHelp.com home"><span>mysales</span><b>help</b><i>.com</i></a>
         <p style="font-size:.94rem">Sales training, sales coaching, and objection handling systems built by Zach Wennstedt. Free tools that stay free, and paid work that leaves a documented process behind.</p>
-        <p style="font-size:.9rem;margin-top:14px">1001 Bannock St #660<br>Denver, CO 80204<br><a href="mailto:sales@eyetoad.com">sales@eyetoad.com</a></p>
+        <a href="tel:+18004818638" class="btn btn-solid btn-lg fcall"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
+        <p style="font-size:.9rem">1001 Bannock St #660<br>Denver, CO 80204<br><a href="mailto:sales@eyetoad.com">sales@eyetoad.com</a></p>
       </div>
       <div>
         <h4>Free tools</h4>
@@ -1965,7 +2007,7 @@ footer.site a:hover{color:#FFA260}
         <h4>Work with Zach</h4>
         <ul>
           <li><a href="/sales-training-programs/">Sales training packages</a></li>
-          <li><a href="#makeover">Sales training makeovers</a></li>
+          <li><a href="/sales-training-makeover/">Sales training makeovers</a></li>
           <li><a href="#zach">Zach Wennstedt, sales coach</a></li>
           <li><a href="#book">Book a call</a></li>
           <li><a href="https://eyetoad.com/" rel="noopener">Eye To Ad Media, Denver SEO</a></li>
@@ -1983,7 +2025,7 @@ footer.site a:hover{color:#FFA260}
 
 <!-- =============== STICKY MOBILE DOCK =============== -->
 <div class="dock">
-  <a href="#engine" class="btn btn-line">Objection engine</a>
+  <a href="tel:+18004818638" class="btn btn-line">Call 800-481-8638</a>
   <a href="#book" class="btn btn-solid">Book a call</a>
 </div>
 
@@ -2014,6 +2056,7 @@ footer.site a:hover{color:#FFA260}
         <button type="submit" class="btn btn-solid btn-lg btn-block" id="modalSubmit">Book a call with Zach</button>
         <div class="fstat" id="modalStatus" role="status" aria-live="polite"></div>
         <p class="fnote">No newsletter, no drip sequence. This goes to Zach directly.</p>
+        <p style="text-align:center;margin:14px 0 0;font-size:.92rem">Or skip the form and call toll-free <a href="tel:+18004818638"><strong>1-800-481-8638</strong></a></p>
         <button type="button" class="later" id="modalLater">Not right now, keep reading</button>
       </form>
     </div>
