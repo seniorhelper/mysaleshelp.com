@@ -3157,7 +3157,7 @@ footer.site a:hover{color:#FFA260}
       <dl style="margin:0">
         <dt>Resource</dt><dd>MySalesHelp Sales Glossary, 241 terms across eleven categories.</dd>
         <dt>Author</dt><dd>Zach Wennstedt, sales trainer and sales process consultant, Denver, Colorado.</dd>
-        <dt>Contact</dt><dd>Toll-free 1-800-481-8638. Email sales@eyetoad.com</dd>
+        <dt>Contact</dt><dd>Toll-free 1-800-481-8638. Email: <a class="eml" data-a="aW5mbw==" data-b="ZXlldG9hZC5jb20=" href="/#book">Email us</a></dd>
         <dt>Categories</dt><dd>Process &amp; Pipeline, Discovery &amp; Questioning, Objections &amp; Closing, Psychology &amp; Persuasion, Metrics &amp; Forecasting, Prospecting &amp; Outreach, Pricing &amp; Negotiation, Methodologies &amp; Frameworks, Roles, Team &amp; Comp, In-Home &amp; Field Selling, Modern &amp; AI-Era Selling</dd>
         <dt>Licence</dt><dd>Free to read, quote, and adapt for internal training use. Attribution appreciated, not required.</dd>
         <dt>Trademark note</dt><dd>Where a term belongs to a trademarked methodology the owner is named and the underlying idea is described independently. No third-party materials are reproduced.</dd>
@@ -3177,7 +3177,7 @@ footer.site a:hover{color:#FFA260}
         <a class="fmark" href="/" aria-label="MySalesHelp.com home"><span>mysales</span><b>help</b><i>.com</i></a>
         <p style="font-size:.94rem">Sales training, sales coaching, and objection handling systems built by Zach Wennstedt. Free tools that stay free, and paid work that leaves a documented process behind.</p>
         <a href="tel:+18004818638" class="btn btn-solid btn-lg fcall"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
-        <p style="font-size:.9rem">1001 Bannock St #660<br>Denver, CO 80204<br><a href="mailto:sales@eyetoad.com">sales@eyetoad.com</a></p>
+        <p style="font-size:.9rem">1001 Bannock St #660<br>Denver, CO 80204<br><a class="eml" data-a="aW5mbw==" data-b="ZXlldG9hZC5jb20=" href="/#book">Email us</a></p>
       </div>
       <div>
         <h4>Free tools</h4>
@@ -3411,5 +3411,6 @@ document.addEventListener("click",function(e){
 
 })();
 </script>
+<script>document.querySelectorAll("a.eml").forEach(function(a){var e=atob(a.dataset.a)+String.fromCharCode(64)+atob(a.dataset.b);a.href="mailto:"+e;a.textContent=e;});</script>
 </body>
 </html>

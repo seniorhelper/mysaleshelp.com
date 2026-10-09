@@ -6,7 +6,7 @@
   <!-- PAGE 1 : HOMEPAGE -->
   <url>
     <loc>https://mysaleshelp.com/</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -43,12 +43,16 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- PAGE 4 : NOT BUILT YET. Uncomment when it goes live. -->
-  <!--
+  <!-- PAGE 4 : SALES TRAINING PROGRAMS -->
   <url>
     <loc>https://mysaleshelp.com/sales-training-programs/</loc>
-    <lastmod>2026-08-07</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
   </url>
-  -->
+
+  <!-- PAGE 5 : SALES TRAINING MAKEOVER -->
+  <url>
+    <loc>https://mysaleshelp.com/sales-training-makeover/</loc>
+    <lastmod>2026-09-03</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
 
 </urlset>

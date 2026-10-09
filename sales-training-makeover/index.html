@@ -1379,7 +1379,7 @@ footer.site a:hover{color:#FFA260}
     <div class="formcard">
       <form id="leadForm" method="POST" novalidate>
         <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
-        <input type="hidden" name="_subject" value="MySalesHelp.com — Sales Training Makeover Inquiry">
+        <input type="hidden" name="_subject" value="New lead — mysaleshelp.com (makeover inquiry)">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="Source_Page" value="mysaleshelp.com sales-training-makeover">
@@ -1414,7 +1414,7 @@ footer.site a:hover{color:#FFA260}
 
         <button type="submit" class="btn btn-solid btn-lg btn-block" id="leadSubmit">Send it to Zach</button>
         <div class="fstat" id="formStatus" role="status" aria-live="polite"></div>
-        <p class="fnote">Goes straight to Zach. No newsletter, no drip sequence, no list. Prefer email? <a href="mailto:sales@eyetoad.com">sales@eyetoad.com</a></p>
+        <p class="fnote">Goes straight to Zach. No newsletter, no drip sequence, no list. Prefer email? <a class="eml" data-a="aW5mbw==" data-b="ZXlldG9hZC5jb20=" href="/#book">Email us</a></p>
       </form>
     </div>
   </div>
@@ -1428,7 +1428,7 @@ footer.site a:hover{color:#FFA260}
       <dl style="margin:0">
         <dt>Service</dt><dd>Sales Training Makeover, a full rebuild of an organization's selling process, presentation, scripts, and objection handling.</dd>
         <dt>Delivered by</dt><dd>Zach Wennstedt, sales trainer and sales process consultant, Denver, Colorado. Parent company: Search Converts LLC.</dd>
-        <dt>Contact</dt><dd>Toll-free 1-800-481-8638. Email sales@eyetoad.com</dd>
+        <dt>Contact</dt><dd>Toll-free 1-800-481-8638. Email: <a class="eml" data-a="aW5mbw==" data-b="ZXlldG9hZC5jb20=" href="/#book">Email us</a></dd>
         <dt>Address</dt><dd>1001 Bannock St #660, Denver, CO 80204, United States.</dd>
         <dt>Service area</dt><dd>All fifty United States and Canada, on-site and remote.</dd>
         <dt>Included</dt><dd>Systematic selling system; custom systematic sales presentation; telemarketing and phone scripts; in-home sales scripts; custom objection library; Do The Right Thing Sales Perfect training course; field ride-alongs; one-on-one coaching; team training; scorecards and onboarding curriculum.</dd>
@@ -1452,7 +1452,7 @@ footer.site a:hover{color:#FFA260}
         <a class="fmark" href="/" aria-label="MySalesHelp.com home"><span>mysales</span><b>help</b><i>.com</i></a>
         <p style="font-size:.94rem">Sales training, sales coaching, and objection handling systems built by Zach Wennstedt. Free tools that stay free, and paid work that leaves a documented process behind.</p>
         <a href="tel:+18004818638" class="btn btn-solid btn-lg fcall"><svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>Call toll-free 1-800-481-8638</a>
-        <p style="font-size:.9rem">1001 Bannock St #660<br>Denver, CO 80204<br><a href="mailto:sales@eyetoad.com">sales@eyetoad.com</a></p>
+        <p style="font-size:.9rem">1001 Bannock St #660<br>Denver, CO 80204<br><a class="eml" data-a="aW5mbw==" data-b="ZXlldG9hZC5jb20=" href="/#book">Email us</a></p>
       </div>
       <div>
         <h4>Free tools</h4>
@@ -1511,7 +1511,7 @@ footer.site a:hover{color:#FFA260}
       <p class="sub">Every makeover is custom quoted. Give me the shape of your team and you'll get a real figure, in writing, with what's in and what's out. Or skip all of this and call.</p>
       <form id="quoteForm" method="POST" novalidate>
         <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
-        <input type="hidden" name="_subject" value="MySalesHelp.com — Makeover Quote Request (popup)">
+        <input type="hidden" name="_subject" value="New lead — mysaleshelp.com (makeover quote, popup)">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="Source_Page" value="mysaleshelp.com sales-training-makeover popup">
@@ -1542,7 +1542,7 @@ footer.site a:hover{color:#FFA260}
       <p class="sub">No deck, no sequence, no obligation. Ten minutes on what's breaking and an honest read on whether a makeover is even the right move for you.</p>
       <form id="exitForm" method="POST" novalidate>
         <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
-        <input type="hidden" name="_subject" value="MySalesHelp.com — Callback Request (exit)">
+        <input type="hidden" name="_subject" value="New lead — mysaleshelp.com (callback request)">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="Source_Page" value="mysaleshelp.com sales-training-makeover exit">
@@ -1757,7 +1757,7 @@ var GAP_TEXT="";
 /* ===================================================================
    FORMS
    =================================================================== */
-function TO(){ return ["sales","eyetoad.com"].join("@"); }
+function TO(){ return atob("aW5mbw==")+String.fromCharCode(64)+atob("ZXlldG9hZC5jb20="); }
 function buildAction(ajax){ return "https://formsubmit.co/"+(ajax?"ajax/":"")+TO(); }
 
 function wireForm(opts){
@@ -1769,7 +1769,7 @@ function wireForm(opts){
     e.preventDefault();
     var hp=f.querySelector('[name="_honey"]');
     if(hp&&hp.value) return;
-    if(Date.now()-loadedAt<3000){ say("warn","One moment. Take a few seconds to review, then send again."); return; }
+    if(Date.now()-loadedAt<3500){ say("warn","Give the form a moment, then send again."); return; }
 
     var bad=false;
     opts.required.forEach(function(id){
@@ -1793,28 +1793,13 @@ function wireForm(opts){
     fetch(buildAction(true),{method:"POST",body:fd,headers:{"Accept":"application/json"}})
       .then(function(r){ if(!r.ok) throw new Error("http "+r.status); return r.json(); })
       .then(function(){
-        say("ok","<strong>Sent and confirmed.</strong> Zach has it and will reply personally, usually within one business day. If it's urgent, call 1-800-481-8638.");
+        say("ok","<strong>Sent.</strong> We'll get back to you shortly.");
         btn.textContent="Sent"; f.reset();
         markDone();
         if(opts.onSuccess) opts.onSuccess();
       })
       .catch(function(){
-        try{
-          var name="fs_"+Date.now();
-          var ifr=document.createElement("iframe");
-          ifr.name=name; ifr.style.display="none"; document.body.appendChild(ifr);
-          var f2=document.createElement("form");
-          f2.method="POST"; f2.action=buildAction(false); f2.target=name; f2.style.display="none";
-          fd.forEach(function(v,k){
-            var i=document.createElement("input"); i.type="hidden"; i.name=k; i.value=v; f2.appendChild(i);
-          });
-          var nx=document.createElement("input"); nx.type="hidden"; nx.name="_next";
-          nx.value="https://mysaleshelp.com/sales-training-makeover/"; f2.appendChild(nx);
-          document.body.appendChild(f2); f2.submit();
-          say("warn","<strong>Submitted, but not confirmed.</strong> It went through a fallback method and delivery could not be verified. If you don't hear back within one business day, call 1-800-481-8638 or email <a href=\"mailto:"+TO()+"\">"+TO()+"</a>.");
-        }catch(err){
-          say("err","<strong>That didn't send.</strong> Please call 1-800-481-8638 or email <a href=\"mailto:"+TO()+"\">"+TO()+"</a> directly.");
-        }
+        say("err","<strong>That did not go through.</strong> Please call 1-800-481-8638.");
         btn.disabled=false; btn.textContent=label;
       });
   });
@@ -1917,5 +1902,6 @@ wireForm({form:"#exitForm",status:"#exitStatus",btn:"#exitSubmit",required:["#x_
 
 })();
 </script>
+<script>document.querySelectorAll("a.eml").forEach(function(a){var e=atob(a.dataset.a)+String.fromCharCode(64)+atob(a.dataset.b);a.href="mailto:"+e;a.textContent=e;});</script>
 </body>
 </html>
